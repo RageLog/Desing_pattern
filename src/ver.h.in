@@ -1,0 +1,5 @@
+#pragma once
+// version variable that will be substituted by cmake
+// This shows an example using the $ variable type
+const char* ver = "${CMAKE_PROJECT_VERSION}";
+
