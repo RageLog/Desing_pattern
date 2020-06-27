@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.18)
 option(USE_VCPKG "Use VCPKG" OFF)
 option(PASS_VERSION "Pass the version from cmake file to source code" ON)
 option(USE_CUSTOM_DIR "Use custom dir" ON)
-option(BUILD_STATIC "Build static or dinamic library" OFF)
+option(BUILD_STATIC "Build static or dinamic library" ON)
 option(CREATE_RUNTIME_FILE "Create executable filese" ON)
 option(ADD_TO_PACKAGE_LIB_HEADER "Create lib and Header folders in package" ON)
 option(USE_NSIS "Use NSIS generator to produce installer" ON)
@@ -38,15 +38,16 @@ set(COMPANY_NAME "YOUR_COMPANY_NAME")
 
 # If you set any CMAKE_ variables, that can go here.
 # (But usually don't do this, except maybe for C++ standard)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Xclang -std=c++20")
 
 #if you,how can you use clang-tidy open thia comment
 #set(CMAKE_CXX_CLANG_TIDY clang-tidy; -header-filter=.; -checks=*;)
 
 #Thank you for this Jason Turner :)
 add_library(project_options INTERFACE)
-target_compile_features(project_options INTERFACE cxx_std_17)
+target_compile_features(project_options INTERFACE cxx_std_20)
 
 add_library(project_warnings INTERFACE)
 
@@ -114,7 +115,7 @@ endif()
 #If you use vcpkg,USE_VCPKG must be ON
 if(USE_VCPKG)
     set(vcpkgRoot "SET THIS")
-    if(${vcpkgRoot} STREQUAL "SET THIS")
+    if(NOT EXISTS ${vcpkgRoot})
         message(FATAL_ERROR "Please set vcpkg root for exemple: C:/vcpkg or C:/vcpkg-master")
     else()
         set(CMAKE_TOOLCHAIN_FILE "${vcpkgRoot}/scripts/buildsystems/vcpkg.cmake")

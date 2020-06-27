@@ -86,7 +86,17 @@
         "xstring": "cpp",
         "xtr1common": "cpp",
         "xtree": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "bit": "cpp",
+        "*.tcc": "cpp",
+        "compare": "cpp",
+        "memory_resource": "cpp",
+        "string_view": "cpp",
+        "ranges": "cpp",
+        "stop_token": "cpp",
+        "cfenv": "cpp",
+        "cinttypes": "cpp",
+        "*.inc": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled",
     "editor.tokenColorCustomizations": {
@@ -115,6 +125,5 @@
         {
             "pattern": "tests/tests_output/*/*.exe"
         }
-    ],
-    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+    ]
 }

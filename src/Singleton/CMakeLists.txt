@@ -22,6 +22,8 @@ SET_TARGET_PROPERTIES(${LIBRARY_Name} PROPERTIES PREFIX " ")
 
 #where is your include file
 target_include_directories(${LIBRARY_Name} PUBLIC "${INCLUDE_DIR}/")
+target_include_directories(${LIBRARY_Name} PRIVATE ${CMAKE_SOURCE_DIR}/src/)
+
 #GIVE to ID for each
 set(LIB_IDENTIFIER "YOUR_IDENTIFIER")
 target_compile_definitions(${LIBRARY_Name} PUBLIC ${LIBRARY_Name}_ID="${LIB_IDENTIFIER}")
