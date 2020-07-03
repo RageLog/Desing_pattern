@@ -1,2 +1,3 @@
-#Project template for cmake.
-->this is provide to you that, cmake-git-software parallel versioning, guiding to project,fast development.
+#Implemented deesing pattern
+##Thread safe singleton exemple
+##Factory method with smart pointer.

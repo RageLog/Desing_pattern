@@ -5,7 +5,7 @@
 #include "ver.h"
 #endif  // PROJECT_VERSION_DEFINITIONED
 #include "Singleton/Singleton.hpp"
-
+#include "Static_class/Static_class.hpp"
 int main(/*int argc, char *argv[]*/)
 {
 #if defined(PROJECT_VERSION_DEFINITIONED)
@@ -24,6 +24,7 @@ int main(/*int argc, char *argv[]*/)
      std::cout << Singleton::getInstance()->getValue() << '\n';
    }
 
+ Static_class::doStuff();
   if (t1.joinable())
   {
     t1.join();
