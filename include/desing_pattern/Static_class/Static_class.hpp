@@ -1,16 +1,15 @@
 
 #pragma once
 #include <atomic>
-#include <mutex>
 #include <memory>
+#include <mutex>
 
 class Static_class
 {
-private:
+ private:
   /* data */
-public:
+ public:
   Static_class(/* args */) = delete;
   ~Static_class() = delete;
   static void doStuff();
 };
-

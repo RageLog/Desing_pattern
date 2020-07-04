@@ -1,36 +1,26 @@
 #pragma once
 #include <atomic>
-#include <mutex>
 #include <memory>
+#include <mutex>
 
 class Singleton
-{     
+{
 
-private:
+ private:
   Singleton() = default;
   ~Singleton() = default;
-  Singleton(const Singleton & ) = delete;
-  Singleton& operator=(const Singleton &) = delete;
-
+  Singleton(const Singleton&) = delete;
+  Singleton& operator=(const Singleton&) = delete;
 
   static std::atomic<Singleton*> m_instance;
   static std::mutex m_mutex;
 
   int val;
-protected:
 
-public:
-
+ protected:
+ public:
   static Singleton* getInstance();
 
   void setValue(int& _val);
   const int& getValue();
-
-
-
 };
-
-
-
-
-
