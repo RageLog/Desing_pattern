@@ -18,7 +18,7 @@ else()
     target_include_directories(${LIBRARY_Name} PRIVATE ${CMAKE_SOURCE_DIR}/src/misc/)
 endif()
 
-SET_TARGET_PROPERTIES(${LIBRARY_Name} PROPERTIES PREFIX " ")
+SET_TARGET_PROPERTIES(${LIBRARY_Name} PROPERTIES PREFIX "")
 
 #where is your include file
 target_include_directories(${LIBRARY_Name} PUBLIC "${INCLUDE_DIR}/")

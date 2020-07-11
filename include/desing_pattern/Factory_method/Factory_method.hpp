@@ -18,19 +18,21 @@ class Object
   virtual ~Object() = 0;
   // ! pure virtual function
   virtual void doSomething() = 0;
-  std::shared_ptr<Object> create(m_type t);
+  static std::shared_ptr<Object> create(m_type t);
 };
 
 class Class_1 : public Object
 {
  private:
  public:
-  virtual void doSomething() override;
+  Class_1();
+  void doSomething() override;
 };
 
 class Class_2 : public Object
 {
  private:
  public:
-  virtual void doSomething() override;
+  Class_2();
+  void doSomething() override;
 };

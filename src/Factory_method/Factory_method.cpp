@@ -1,5 +1,12 @@
 #include "Factory_method/Factory_method.hpp"
 
+#include <iostream>
+Object::Object()
+{
+}
+Object::~Object()
+{
+}
 std::shared_ptr<Object> Object::create(m_type t)
 {
   switch (t)
@@ -11,4 +18,21 @@ std::shared_ptr<Object> Object::create(m_type t)
     default:
       return nullptr;
   }
+}
+
+Class_1::Class_1()
+{
+}
+
+void Class_1::doSomething()
+{
+  std::cout << "Class 1 doSomething" << '\n';
+}
+
+Class_2::Class_2()
+{
+}
+void Class_2::doSomething()
+{
+  std::cout << "Class 2 doSomething" << '\n';
 }
