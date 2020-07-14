@@ -5,6 +5,7 @@
 #include "ver.h"
 #endif  // PROJECT_VERSION_DEFINITIONED
 #include "Abstract_Factory/Abstract_Factory.hpp"
+#include "Builder/Builder.hpp"
 #include "Factory_method/Factory_method.hpp"
 #include "Singleton/Singleton.hpp"
 #include "Static_class/Static_class.hpp"
@@ -28,4 +29,9 @@ int main(/*int argc, char *argv[]*/)
   absFactory::createFactory(absFactory::typeOfFactories::Factory_2)
       ->getAbsProduct_2()
       ->doSomeThing();
+  Director m_dir;
+  auto m_product =
+      m_dir.setBuilder(std::make_shared<concreteBuilder_1>()).fullFeaturedProduct().build();
+  std::cout << "is it work :)" << m_product->doSomeThingWithPart() << '\n';
+  return EXIT_SUCCESS;
 }

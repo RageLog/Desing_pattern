@@ -67,7 +67,7 @@ class absFactory  // clothing factory (main factory)
     Factory_2 = 0x01   // shoues  factory
   };
   absFactory();
-  static std::shared_ptr<absFactory> createFactory(typeOfFactories t);
+  static std::shared_ptr<absFactory> createFactory(const typeOfFactories& t);
   virtual std::shared_ptr<AbsProduct_1> getAbsProduct_1() = 0;
   virtual std::shared_ptr<AbsProduct_2> getAbsProduct_2() = 0;
   virtual ~absFactory() = 0;

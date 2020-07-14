@@ -84,7 +84,7 @@ void conProduct_2_2::doSomeThing()
   std::cout << "I'm product 2 - 2" << '\n';
 }
 
-std::shared_ptr<absFactory> absFactory::createFactory(typeOfFactories t)
+std::shared_ptr<absFactory> absFactory::createFactory(const typeOfFactories& t)
 {
   switch (t)
   {

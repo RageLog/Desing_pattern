@@ -7,7 +7,7 @@ Object::Object()
 Object::~Object()
 {
 }
-std::shared_ptr<Object> Object::create(m_type t)
+std::shared_ptr<Object> Object::create(const m_type& t)
 {
   switch (t)
   {
