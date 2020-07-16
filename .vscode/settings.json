@@ -97,7 +97,8 @@
         "cfenv": "cpp",
         "cinttypes": "cpp",
         "*.inc": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "hash_map": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled",
     "editor.tokenColorCustomizations": {

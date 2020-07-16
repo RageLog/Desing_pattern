@@ -9,6 +9,7 @@
 #include "Factory_method/Factory_method.hpp"
 #include "Singleton/Singleton.hpp"
 #include "Static_class/Static_class.hpp"
+#include "Prototype/Prototype.hpp"
 
 int main(/*int argc, char *argv[]*/)
 {
@@ -32,6 +33,10 @@ int main(/*int argc, char *argv[]*/)
   Director m_dir;
   auto m_product =
       m_dir.setBuilder(std::make_shared<concreteBuilder_1>()).fullFeaturedProduct().build();
-  std::cout << "is it work :)" << m_product->doSomeThingWithPart() << '\n';
+  std::cout << "it is work :)" << m_product->doSomeThingWithPart() << '\n';
+  factoryPrototype fP;
+  auto p1 = fP.createCloneOf(typeOfPrototype::prototype_1);
+  auto p2 = fP.createCloneOf(typeOfPrototype::prototype_2);
+
   return EXIT_SUCCESS;
 }
