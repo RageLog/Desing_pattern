@@ -4,3 +4,4 @@ This is sample desing pattern for educational purpose. I try to implemanted with
 ## Factory method with smart pointer.
 ## Abstract factory with Factory method and smart pointer
 ## Builder example
+## Prototype example with more modern C++
