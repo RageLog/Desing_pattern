@@ -7,9 +7,9 @@
 #include "Abstract_Factory/Abstract_Factory.hpp"
 #include "Builder/Builder.hpp"
 #include "Factory_method/Factory_method.hpp"
+#include "Prototype/Prototype.hpp"
 #include "Singleton/Singleton.hpp"
 #include "Static_class/Static_class.hpp"
-#include "Prototype/Prototype.hpp"
 
 int main(/*int argc, char *argv[]*/)
 {
