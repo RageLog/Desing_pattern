@@ -80,7 +80,7 @@ absBuilder::~absBuilder()
 {
 }
 
-concreteBuilder_1::concreteBuilder_1() : m_product(std::make_shared<Product>())
+concreteBuilder_1::concreteBuilder_1() : m_product(std::make_unique<Product>())
 {
 }
 concreteBuilder_1::~concreteBuilder_1()
@@ -124,7 +124,7 @@ Director& Director::setBuilder(const std::shared_ptr<absBuilder>& builder)
   return *this;
 }
 
-Director& Director::setBuilder(std::shared_ptr<absBuilder>&& builder)
+Director& Director::setBuilder(std::unique_ptr<absBuilder>&& builder)
 {
   this->m_builder = std::move(builder);
   return *this;

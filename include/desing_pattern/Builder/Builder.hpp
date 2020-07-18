@@ -68,10 +68,10 @@ class Product  // car-build-desk-udp socket
 {
  private:
   friend class concreteBuilder_1;
-  std::shared_ptr<productPart_1> part_1 = std::make_shared<productPart_1>();
-  std::shared_ptr<productPart_2> part_2 = std::make_shared<productPart_2>();
-  std::shared_ptr<productPart_3> part_3 = std::make_shared<productPart_3>();
-  std::shared_ptr<productPart_4> part_4 = std::make_shared<productPart_4>();
+  std::unique_ptr<productPart_1> part_1 = std::make_unique<productPart_1>();
+  std::unique_ptr<productPart_2> part_2 = std::make_unique<productPart_2>();
+  std::unique_ptr<productPart_3> part_3 = std::make_unique<productPart_3>();
+  std::unique_ptr<productPart_4> part_4 = std::make_unique<productPart_4>();
 
  public:
   Product();
@@ -101,7 +101,7 @@ class Director
 
  public:
   Director& setBuilder(const std::shared_ptr<absBuilder>& builder);
-  Director& setBuilder(std::shared_ptr<absBuilder>&& builder);
+  Director& setBuilder(std::unique_ptr<absBuilder>&& builder);
   Director& fullFeaturedProduct();
   Director& minFeaturedProduct();
   std::shared_ptr<Product> build();

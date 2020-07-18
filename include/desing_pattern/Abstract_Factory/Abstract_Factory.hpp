@@ -67,9 +67,9 @@ class absFactory  // clothing factory (main factory)
     Factory_2 = 0x01   // shoues  factory
   };
   absFactory();
-  static std::shared_ptr<absFactory> createFactory(const typeOfFactories& t);
-  virtual std::shared_ptr<AbsProduct_1> getAbsProduct_1() = 0;
-  virtual std::shared_ptr<AbsProduct_2> getAbsProduct_2() = 0;
+  static std::unique_ptr<absFactory> createFactory(const typeOfFactories& t);
+  virtual std::unique_ptr<AbsProduct_1> getAbsProduct_1() = 0;
+  virtual std::unique_ptr<AbsProduct_2> getAbsProduct_2() = 0;
   virtual ~absFactory() = 0;
 };
 
@@ -77,8 +77,8 @@ class conFactory_1 : public absFactory  // cloth
 {
  private:
  public:
-  std::shared_ptr<AbsProduct_1> getAbsProduct_1() override;
-  std::shared_ptr<AbsProduct_2> getAbsProduct_2() override;
+  std::unique_ptr<AbsProduct_1> getAbsProduct_1() override;
+  std::unique_ptr<AbsProduct_2> getAbsProduct_2() override;
   conFactory_1();
   ~conFactory_1();
 };
@@ -87,8 +87,8 @@ class conFactory_2 : public absFactory  // shou
 {
  private:
  public:
-  std::shared_ptr<AbsProduct_1> getAbsProduct_1() override;
-  std::shared_ptr<AbsProduct_2> getAbsProduct_2() override;
+  std::unique_ptr<AbsProduct_1> getAbsProduct_1() override;
+  std::unique_ptr<AbsProduct_2> getAbsProduct_2() override;
   conFactory_2();
   ~conFactory_2();
 };

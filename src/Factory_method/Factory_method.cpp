@@ -7,14 +7,14 @@ Object::Object()
 Object::~Object()
 {
 }
-std::shared_ptr<Object> Object::create(const m_type& t)
+std::unique_ptr<Object> Object::create(const m_type& t)
 {
   switch (t)
   {
     case m_type::m_Class1:
-      return std::make_shared<Class_1>();
+      return std::make_unique<Class_1>();
     case m_type::m_Class2:
-      return std::make_shared<Class_2>();
+      return std::make_unique<Class_2>();
     default:
       return nullptr;
   }
