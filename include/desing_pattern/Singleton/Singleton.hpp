@@ -21,6 +21,6 @@ class Singleton
  public:
   static Singleton* getInstance();
 
-  void setValue(int& _val);
+  void setValue(const int& _val);
   const int& getValue();
 };

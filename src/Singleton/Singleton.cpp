@@ -21,7 +21,7 @@ Singleton* Singleton::getInstance()
   return instance;
 }
 
-void Singleton::setValue(int& _val)
+void Singleton::setValue(const int& _val)
 {
   std::lock_guard<std::mutex> m_Lock(m_mutex);
   this->val = _val;
