@@ -11,20 +11,21 @@
 #include "Prototype/Prototype.hpp"
 #include "Singleton/Singleton.hpp"
 #include "Static_class/Static_class.hpp"
+#include "Bridge/Bridge.hpp"
 
 int main(/*int argc, char *argv[]*/)
 {
 #if defined(PROJECT_VERSION_DEFINITIONED)
   std::cout << "Project version is :" << ver << '\n';
 #endif  // PROJECT_VERSION_DEFINITIONED
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////
-  // ! creational design patterns
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////
-  // ? factory method
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// ! creational design patterns
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// ? factory method
   auto obj = Object::create(m_type::m_Class2);
   obj->doSomething();
 
-  // ? abstarct factory
+// ? abstarct factory 
   absFactory::createFactory(absFactory::typeOfFactories::Factory_1)
       ->getAbsProduct_1()
       ->doSomeThing();
@@ -38,28 +39,41 @@ int main(/*int argc, char *argv[]*/)
       ->getAbsProduct_2()
       ->doSomeThing();
 
-  // ? builder
+// ? builder
   Director m_dir;
   auto m_product =
       m_dir.setBuilder(std::make_shared<concreteBuilder_1>()).fullFeaturedProduct().build();
   std::cout << "it is work :)" << m_product->doSomeThingWithPart() << '\n';
 
-  // ? prototype method
+// ? prototype method
   factoryPrototype fP;
   auto p1 = fP.createCloneOf(typeOfPrototype::prototype_1);
   auto p2 = fP.createCloneOf(typeOfPrototype::prototype_2);
 
-  // ? singleton
+// ? singleton
   Singleton::getInstance()->setValue(10);
   std::cout << "singleton value" << Singleton::getInstance()->getValue() << '\n';
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
-  // ! structural design pattern
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////
-  // ? adapter
+ // ! structural design pattern
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////
+ // ? adapter
   auto adapt_1 = adapter::adapter(std::make_shared<adapter::newIncompatibleClass>());
   auto adaptClient_1 = adapter::clientClass(adapt_1);
   auto adapt_2 = adapter::adapter(std::make_shared<adapter::oldClass>());
   auto adaptClient_2 = adapter::clientClass(adapt_2);
 
+ // ? bridge
+  auto m_impl_1 = concrateImpl_1();
+  auto m_impl_2 = concrateImpl_2();
+
+  auto m_useCase_1_1 = useCase_1(m_impl_1);
+  m_useCase_1_1.abstructSomeFunctionality();
+  auto m_useCase_1_2 = useCase_1(m_impl_2);
+  m_useCase_1_2.abstructSomeFunctionality();
+
+  auto m_useCase_2_1 = useCase_2(m_impl_1);
+  m_useCase_2_1.abstructSomeFunctionality();
+  auto m_useCase_2_2 = useCase_2(m_impl_2);
+  m_useCase_2_2.abstructSomeFunctionality();
   return EXIT_SUCCESS;
 }
