@@ -98,7 +98,8 @@
         "cinttypes": "cpp",
         "*.inc": "cpp",
         "*.ipp": "cpp",
-        "hash_map": "cpp"
+        "hash_map": "cpp",
+        "*.def": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled",
     "editor.tokenColorCustomizations": {

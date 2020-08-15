@@ -12,6 +12,7 @@
 #include "Singleton/Singleton.hpp"
 #include "Static_class/Static_class.hpp"
 #include "Bridge/Bridge.hpp"
+#include "Composite/Composite.hpp"
 
 int main(/*int argc, char *argv[]*/)
 {
@@ -75,5 +76,35 @@ int main(/*int argc, char *argv[]*/)
   m_useCase_2_1.abstructSomeFunctionality();
   auto m_useCase_2_2 = useCase_2(m_impl_2);
   m_useCase_2_2.abstructSomeFunctionality();
+
+  // ? composite
+
+  composite c1;
+  composite c2;
+  c1.add(c2);
+  c1.doSomeThing();
+  /** 
+   * * don't do this 
+  c2.add(c1);
+  c2.doSomeThing();
+  */
+
+
+  /**
+   * ! This is Vishal Chovatiya crtp implemantation
+  composite c1,c2;
+  groupOfComponent g1(1),g2(2);
+  c1.connect_to(g1);
+  g2.connect_to(c2);
+  g1.connect_to(g2);
+  c1.connect_to(c2);
+
+  std::cout << "c1 :" << '\n' << c1 << '\n';
+  std::cout << "c2 :" << '\n' << c2 << '\n';
+  std::cout << "g1 :" << '\n' << g1 << '\n';
+  std::cout << "g2 :" << '\n' << g2 << '\n';
+  */
+  
+
   return EXIT_SUCCESS;
 }
