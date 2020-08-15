@@ -7,4 +7,4 @@ This is sample desing pattern for educational purpose. I try to implemanted with
 ## Prototype example with more modern C++
 ## Adapter example
 ## Bridge example
-## Composite with CRTP -> working on this
+## Composite with CRTP
