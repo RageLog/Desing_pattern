@@ -14,6 +14,7 @@
 #include "Prototype/Prototype.hpp"
 #include "Singleton/Singleton.hpp"
 #include "Static_class/Static_class.hpp"
+#include "Facade/Facade.hpp"
 int main(/*int argc, char *argv[]*/)
 {
 #if defined(PROJECT_VERSION_DEFINITIONED)
@@ -145,5 +146,11 @@ int main(/*int argc, char *argv[]*/)
 
   //auto s_dec_ = sttc::concreteDecorator<int>();// this is going to give an error to you.
 
+  // ? facade
+  std::cout << '\n' << "facade:" << "\n\n";
+
+  // * You can implament set to system object method.
+  overAllSystemFacade m_Facade;
+  m_Facade.doHighLevelSomeThing();
   return EXIT_SUCCESS;
 }
