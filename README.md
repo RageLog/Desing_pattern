@@ -3,8 +3,9 @@ This is sample desing pattern for educational purpose. I try to implemanted with
 ## Thread safe singleton exemple
 ## Factory method with smart pointer.
 ## Abstract factory with Factory method and smart pointer
-## Builder example
-## Prototype example with more modern C++
-## Adapter example
-## Bridge example
+## Builder
+## Prototype with more modern C++
+## Adapter
+## Bridge
 ## Composite with CRTP
+## Dynamic and Static Decorator

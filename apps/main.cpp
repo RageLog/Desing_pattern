@@ -6,27 +6,33 @@
 #endif  // PROJECT_VERSION_DEFINITIONED
 #include "Abstract_Factory/Abstract_Factory.hpp"
 #include "Adapter/Adapter.hpp"
+#include "Bridge/Bridge.hpp"
 #include "Builder/Builder.hpp"
+#include "Composite/Composite.hpp"
+#include "Decorator/Decorator.hpp"
 #include "Factory_method/Factory_method.hpp"
 #include "Prototype/Prototype.hpp"
 #include "Singleton/Singleton.hpp"
 #include "Static_class/Static_class.hpp"
-#include "Bridge/Bridge.hpp"
-#include "Composite/Composite.hpp"
-
 int main(/*int argc, char *argv[]*/)
 {
 #if defined(PROJECT_VERSION_DEFINITIONED)
   std::cout << "Project version is :" << ver << '\n';
 #endif  // PROJECT_VERSION_DEFINITIONED
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-// ! creational design patterns
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-// ? factory method
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ! creational design patterns
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+  std::cout << "creational design patterns:" << "\n\n\n";
+
+  // ? factory method
+  std::cout << '\n' << "factory method:" << "\n\n";
+
   auto obj = Object::create(m_type::m_Class2);
   obj->doSomething();
 
-// ? abstarct factory 
+  // ? abstarct factory
+  std::cout << '\n' << "abstarct method:" << "\n\n";
+
   absFactory::createFactory(absFactory::typeOfFactories::Factory_1)
       ->getAbsProduct_1()
       ->doSomeThing();
@@ -40,30 +46,42 @@ int main(/*int argc, char *argv[]*/)
       ->getAbsProduct_2()
       ->doSomeThing();
 
-// ? builder
+  // ? builder
+  std::cout << '\n' << "builder:" << "\n\n";
+
   Director m_dir;
   auto m_product =
       m_dir.setBuilder(std::make_shared<concreteBuilder_1>()).fullFeaturedProduct().build();
   std::cout << "it is work :)" << m_product->doSomeThingWithPart() << '\n';
 
-// ? prototype method
+  // ? prototype
+  std::cout << '\n' << "prototype:" << "\n\n";
+
   factoryPrototype fP;
   auto p1 = fP.createCloneOf(typeOfPrototype::prototype_1);
   auto p2 = fP.createCloneOf(typeOfPrototype::prototype_2);
 
-// ? singleton
+  // ? singleton
+  std::cout << '\n' << "singleton:" << "\n\n";
+
   Singleton::getInstance()->setValue(10);
   std::cout << "singleton value" << Singleton::getInstance()->getValue() << '\n';
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
- // ! structural design pattern
- ///////////////////////////////////////////////////////////////////////////////////////////////////////
- // ? adapter
+  // ! structural design pattern
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+  std::cout << "structural design pattern:" << "\n\n\n";
+
+  // ? adapter
+  std::cout << '\n' << "adapter:" << "\n\n";
+
   auto adapt_1 = adapter::adapter(std::make_shared<adapter::newIncompatibleClass>());
   auto adaptClient_1 = adapter::clientClass(adapt_1);
   auto adapt_2 = adapter::adapter(std::make_shared<adapter::oldClass>());
   auto adaptClient_2 = adapter::clientClass(adapt_2);
 
- // ? bridge
+  // ? bridge
+  std::cout << '\n' << "bridge:" << "\n\n";
+
   auto m_impl_1 = concrateImpl_1();
   auto m_impl_2 = concrateImpl_2();
 
@@ -78,17 +96,18 @@ int main(/*int argc, char *argv[]*/)
   m_useCase_2_2.abstructSomeFunctionality();
 
   // ? composite
+  std::cout << '\n' << "composite:" << "\n\n";
 
   composite c1;
   composite c2;
   c1.add(c2);
   c1.doSomeThing();
-  /** 
-   * * don't do this 
+  /**
+   * * don't do this
+   * * this cause to infinite loop
   c2.add(c1);
   c2.doSomeThing();
   */
-
 
   /**
    * ! This is Vishal Chovatiya crtp implemantation
@@ -104,7 +123,27 @@ int main(/*int argc, char *argv[]*/)
   std::cout << "g1 :" << '\n' << g1 << '\n';
   std::cout << "g2 :" << '\n' << g2 << '\n';
   */
-  
+
+  // ? decorator
+  std::cout << '\n' << "decorator:" << "\n\n";
+
+  auto m_comp_1 = concreteComponent_1();
+
+  // * dynamic
+  auto d_dec = dynmc::concreteDecorator(m_comp_1);
+  d_dec.doSomething();
+  d_dec.genaralEnhancedFunc();
+  d_dec.enhancedFunc();
+  // ! d_dec.componentSpecificMethod(); <- You cannot access this method like this. Look to the static method !!
+  m_comp_1.componentSpecificMethod();
+  std::cout << "\n\n";
+  // * static
+  auto s_dec = sttc::concreteDecorator<concreteComponent_2>();
+  s_dec.doSomething();
+  s_dec.enhancedFunc();
+  s_dec.componentSpecificMethod();
+
+  //auto s_dec_ = sttc::concreteDecorator<int>();// this is going to give an error to you.
 
   return EXIT_SUCCESS;
 }
