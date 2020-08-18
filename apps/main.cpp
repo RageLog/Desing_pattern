@@ -10,11 +10,11 @@
 #include "Builder/Builder.hpp"
 #include "Composite/Composite.hpp"
 #include "Decorator/Decorator.hpp"
+#include "Facade/Facade.hpp"
 #include "Factory_method/Factory_method.hpp"
 #include "Prototype/Prototype.hpp"
 #include "Singleton/Singleton.hpp"
 #include "Static_class/Static_class.hpp"
-#include "Facade/Facade.hpp"
 int main(/*int argc, char *argv[]*/)
 {
 #if defined(PROJECT_VERSION_DEFINITIONED)
@@ -23,16 +23,21 @@ int main(/*int argc, char *argv[]*/)
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
   // ! creational design patterns
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
-  std::cout << "creational design patterns:" << "\n\n\n";
+  std::cout << "creational design patterns:"
+            << "\n\n\n";
 
   // ? factory method
-  std::cout << '\n' << "factory method:" << "\n\n";
+  std::cout << '\n'
+            << "factory method:"
+            << "\n\n";
 
   auto obj = Object::create(m_type::m_Class2);
   obj->doSomething();
 
   // ? abstarct factory
-  std::cout << '\n' << "abstarct method:" << "\n\n";
+  std::cout << '\n'
+            << "abstarct method:"
+            << "\n\n";
 
   absFactory::createFactory(absFactory::typeOfFactories::Factory_1)
       ->getAbsProduct_1()
@@ -48,7 +53,9 @@ int main(/*int argc, char *argv[]*/)
       ->doSomeThing();
 
   // ? builder
-  std::cout << '\n' << "builder:" << "\n\n";
+  std::cout << '\n'
+            << "builder:"
+            << "\n\n";
 
   Director m_dir;
   auto m_product =
@@ -56,24 +63,31 @@ int main(/*int argc, char *argv[]*/)
   std::cout << "it is work :)" << m_product->doSomeThingWithPart() << '\n';
 
   // ? prototype
-  std::cout << '\n' << "prototype:" << "\n\n";
+  std::cout << '\n'
+            << "prototype:"
+            << "\n\n";
 
   factoryPrototype fP;
   auto p1 = fP.createCloneOf(typeOfPrototype::prototype_1);
   auto p2 = fP.createCloneOf(typeOfPrototype::prototype_2);
 
   // ? singleton
-  std::cout << '\n' << "singleton:" << "\n\n";
+  std::cout << '\n'
+            << "singleton:"
+            << "\n\n";
 
   Singleton::getInstance()->setValue(10);
   std::cout << "singleton value" << Singleton::getInstance()->getValue() << '\n';
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
   // ! structural design pattern
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
-  std::cout << "structural design pattern:" << "\n\n\n";
+  std::cout << "structural design pattern:"
+            << "\n\n\n";
 
   // ? adapter
-  std::cout << '\n' << "adapter:" << "\n\n";
+  std::cout << '\n'
+            << "adapter:"
+            << "\n\n";
 
   auto adapt_1 = adapter::adapter(std::make_shared<adapter::newIncompatibleClass>());
   auto adaptClient_1 = adapter::clientClass(adapt_1);
@@ -81,7 +95,9 @@ int main(/*int argc, char *argv[]*/)
   auto adaptClient_2 = adapter::clientClass(adapt_2);
 
   // ? bridge
-  std::cout << '\n' << "bridge:" << "\n\n";
+  std::cout << '\n'
+            << "bridge:"
+            << "\n\n";
 
   auto m_impl_1 = concrateImpl_1();
   auto m_impl_2 = concrateImpl_2();
@@ -97,7 +113,9 @@ int main(/*int argc, char *argv[]*/)
   m_useCase_2_2.abstructSomeFunctionality();
 
   // ? composite
-  std::cout << '\n' << "composite:" << "\n\n";
+  std::cout << '\n'
+            << "composite:"
+            << "\n\n";
 
   composite c1;
   composite c2;
@@ -126,7 +144,9 @@ int main(/*int argc, char *argv[]*/)
   */
 
   // ? decorator
-  std::cout << '\n' << "decorator:" << "\n\n";
+  std::cout << '\n'
+            << "decorator:"
+            << "\n\n";
 
   auto m_comp_1 = concreteComponent_1();
 
@@ -135,7 +155,8 @@ int main(/*int argc, char *argv[]*/)
   d_dec.doSomething();
   d_dec.genaralEnhancedFunc();
   d_dec.enhancedFunc();
-  // ! d_dec.componentSpecificMethod(); <- You cannot access this method like this. Look to the static method !!
+  // ! d_dec.componentSpecificMethod(); <- You cannot access this method like this. Look to the
+  // static method !!
   m_comp_1.componentSpecificMethod();
   std::cout << "\n\n";
   // * static
@@ -144,10 +165,12 @@ int main(/*int argc, char *argv[]*/)
   s_dec.enhancedFunc();
   s_dec.componentSpecificMethod();
 
-  //auto s_dec_ = sttc::concreteDecorator<int>();// this is going to give an error to you.
+  // auto s_dec_ = sttc::concreteDecorator<int>();// this is going to give an error to you.
 
   // ? facade
-  std::cout << '\n' << "facade:" << "\n\n";
+  std::cout << '\n'
+            << "facade:"
+            << "\n\n";
 
   // * You can implament set to system object method.
   overAllSystemFacade m_Facade;
