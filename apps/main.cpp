@@ -15,6 +15,7 @@
 #include "Prototype/Prototype.hpp"
 #include "Singleton/Singleton.hpp"
 #include "Static_class/Static_class.hpp"
+#include "Flyweight/Flyweight.hpp"
 int main(/*int argc, char *argv[]*/)
 {
 #if defined(PROJECT_VERSION_DEFINITIONED)
@@ -175,5 +176,25 @@ int main(/*int argc, char *argv[]*/)
   // * You can implament set to system object method.
   overAllSystemFacade m_Facade;
   m_Facade.doHighLevelSomeThing();
+
+  // ? flyweight
+  std::cout << '\n'
+            << "flyweight:"
+            << "\n\n";
+  
+  auto sharedTest = Shared_t(10,"shareddata_test");
+  auto factoryOfFly = flyweightFactory({{1,"insertedSharedData_1"},{2,"insertedSharedData_2"}});
+
+  auto flyP_test_1 = flyProduct(factoryOfFly.getFlyweight(sharedTest),10,"test_1");
+  auto flyP_test_2 = flyProduct(factoryOfFly.getFlyweight(sharedTest),10,"test_2");
+  auto flyP_1= flyProduct(factoryOfFly.getFlyweight({1,"insertedSharedData_1"}),1,"flyP_1");
+  auto flyP_2= flyProduct(factoryOfFly.getFlyweight({2,"insertedSharedData_2"}),2,"flyP_2");
+
+  flyP_test_1.doSomeThing();
+  flyP_test_2.doSomeThing();
+  flyP_1.doSomeThing();
+  flyP_2.doSomeThing();
+
+
   return EXIT_SUCCESS;
 }
