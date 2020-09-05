@@ -12,10 +12,11 @@
 #include "Decorator/Decorator.hpp"
 #include "Facade/Facade.hpp"
 #include "Factory_method/Factory_method.hpp"
+#include "Flyweight/Flyweight.hpp"
 #include "Prototype/Prototype.hpp"
+#include "Proxy/Proxy.hpp"
 #include "Singleton/Singleton.hpp"
 #include "Static_class/Static_class.hpp"
-#include "Flyweight/Flyweight.hpp"
 int main(/*int argc, char *argv[]*/)
 {
 #if defined(PROJECT_VERSION_DEFINITIONED)
@@ -181,20 +182,35 @@ int main(/*int argc, char *argv[]*/)
   std::cout << '\n'
             << "flyweight:"
             << "\n\n";
-  
-  auto sharedTest = Shared_t(10,"shareddata_test");
-  auto factoryOfFly = flyweightFactory({{1,"insertedSharedData_1"},{2,"insertedSharedData_2"}});
 
-  auto flyP_test_1 = flyProduct(factoryOfFly.getFlyweight(sharedTest),10,"test_1");
-  auto flyP_test_2 = flyProduct(factoryOfFly.getFlyweight(sharedTest),10,"test_2");
-  auto flyP_1= flyProduct(factoryOfFly.getFlyweight({1,"insertedSharedData_1"}),1,"flyP_1");
-  auto flyP_2= flyProduct(factoryOfFly.getFlyweight({2,"insertedSharedData_2"}),2,"flyP_2");
+  auto sharedTest = Shared_t(10, "shareddata_test");
+  auto factoryOfFly = flyweightFactory({{1, "insertedSharedData_1"}, {2, "insertedSharedData_2"}});
+
+  auto flyP_test_1 = flyProduct(factoryOfFly.getFlyweight(sharedTest), 10, "test_1");
+  auto flyP_test_2 = flyProduct(factoryOfFly.getFlyweight(sharedTest), 10, "test_2");
+  auto flyP_1 = flyProduct(factoryOfFly.getFlyweight({1, "insertedSharedData_1"}), 1, "flyP_1");
+  auto flyP_2 = flyProduct(factoryOfFly.getFlyweight({2, "insertedSharedData_2"}), 2, "flyP_2");
 
   flyP_test_1.doSomeThing();
   flyP_test_2.doSomeThing();
   flyP_1.doSomeThing();
   flyP_2.doSomeThing();
 
+  // ? Proxy
+  std::cout << '\n'
+            << "Proxy:"
+            << "\n\n";
 
+  std::cout << "Virtual proxy" << '\n';
+  auto m_prx = virtualProxy::Proxy();
+  m_prx.doSomeThing();
+  std::cout << "Property proxy" << '\n';
+  auto m_porpertiesPrx = propertyProxy::someObject();
+  std::cout << "property proxy object value 1 is " << m_porpertiesPrx.value_1 << '\n';
+  std::cout << "property proxy object value 2 is " << m_porpertiesPrx.value_2 << '\n';
+  m_porpertiesPrx.value_1 = 10;
+  m_porpertiesPrx.value_2 = 20;
+  std::cout << "property proxy object value 1 is " << m_porpertiesPrx.value_1 << '\n';
+  std::cout << "property proxy object value 2 is " << m_porpertiesPrx.value_2 << '\n';
   return EXIT_SUCCESS;
 }

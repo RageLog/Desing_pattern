@@ -11,3 +11,4 @@ This is sample desing pattern for educational purpose. I try to implemanted with
 ## Dynamic and Static Decorator
 ## Facade
 ## Flyweight
+## Virtual, Property type proxy pattern
